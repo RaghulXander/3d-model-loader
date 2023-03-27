@@ -1,0 +1,108 @@
+.experience-app {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  display: -webkit-flex;
+  display: -moz-flex;
+  flex-flow: row;
+  -webkit-flex-flow: row;
+  -moz-flex-flow: inherit;
+  overflow: hidden;
+  -webkit-user-select: none !important; /* Safari */
+  -ms-user-select: none !important; /* IE 10 and IE 11 */
+  user-select: none !important; /* Standard syntax */
+
+  .experience-container {
+    width: 100%;
+    height: 100vh;
+
+    .page-container {
+      background-color: #202124;
+
+      width: 360px;
+      min-width: 360px;
+      max-width: 360px;
+      height: 100%;
+      color: #fff;
+
+      .viewerContainer {
+        height: 100%;
+      }
+
+      .outer-container {
+        align-items: center;
+        font-size: 20px;
+        letter-spacing: 0.25px;
+        line-height: 40px;
+        display: flex;
+        overflow: auto;
+        padding: 10px;
+        white-space: nowrap;
+
+        .header {
+          align-items: center;
+          display: flex;
+          margin-left: auto;
+          margin-right: auto;
+          opacity: 1;
+          text-decoration: none;
+        }
+      }
+
+      .seperator {
+        height: 1px;
+        background: #dadce0;
+      }
+
+      .dataSelector {
+        margin: 24px 0;
+        padding: 0 16px;
+        .title {
+          margin-bottom: 8px;
+        }
+      }
+
+      .texturePane {
+        background: rgba(255, 255, 255, 0.88);
+        border-radius: 4px;
+        border: 1px solid #fff;
+        padding: 6px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .texture-item {
+          margin: 4px 8px;
+          cursor: pointer;
+
+          .active {
+            border: 4px solid #4285f4;
+          }
+
+          img {
+            border: 4px solid transparent;
+            border-radius: 6px;
+          }
+        }
+      }
+    }
+  }
+
+  .SCENE {
+    width: 100%;
+    height: 100%;
+    position: absolute !important;
+    touch-action: none !important;
+    height: 100vh !important;
+    /* width: 100vw !important; */
+    width: calc(100% - 360px);
+    top: 0px !important;
+    /* left: 0px !important; */
+    right: 0px;
+    -webkit-user-select: none !important; /* Safari */
+    -ms-user-select: none !important; /* IE 10 and IE 11 */
+    user-select: none !important; /* Standard syntax */
+    z-index: 15;
+    overflow-x: hidden;
+  }
+}

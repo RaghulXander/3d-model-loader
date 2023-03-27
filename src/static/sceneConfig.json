@@ -1,0 +1,43 @@
+{
+  "camera": { "fov": 45 },
+  "rendererConfig": {
+    "antialias": true,
+    "colorManagement": true,
+    "sortObjects": true,
+    "physicallyCorrectLights": true,
+    "shadowMap": { "enabled": false },
+    "toneMapping": { "type": 1, "exposure": 0.75 }
+  },
+  "ambientLight": { "color": 16777215, "intensity": 0.5 },
+  "shadowConfig": {
+    "enableShadow": false,
+    "shadowProperties": {
+      "bias": -0.0001,
+      "mapSize": { "height": 4096, "width": 4096 },
+      "camera": { "near": -1, "bottom": -3, "top": 3, "left": -3, "right": 3 }
+    }
+  },
+  "orbitControls": {
+    "enableZoom": true,
+    "enablePan": false,
+    "dampingFactor": 0.03,
+    "enableDamping": false,
+    "rotateSpeed": 0.8,
+    "enableRotate": true,
+    "zoomSpeed": 0.5
+  },
+  "environmentLight": {
+    "assetId": 1000799431,
+    "type": "HDRI",
+    "exposure": 1.3
+  },
+  "modelAssetId": "3024165396",
+  "assets": {
+    "1000799431": {
+      "type": "HDRI",
+      "exposure": 2,
+      "static_url": "./sceneAssets/scene.hdr",
+      "url": "https://assets.avataar.me/AVTR_TNT_EyWTHeup/AVTR-AST-hJHWEDs2/eV2t6mqX/avtr/Orion_v4_HDRI.hdr"
+    }
+  }
+}
