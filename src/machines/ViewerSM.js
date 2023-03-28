@@ -98,7 +98,7 @@ const ViewerSM = (actions) => ({
       entry: [
         async () => {
           const { selectedTexture } = actions.RootStore();
-          await actions.AssetLoader.loadAssets(
+          await actions.AssetLoader.loadAllAssets(
             {
               [selectedTexture.id]: {
                 url: selectedTexture.url,
@@ -153,7 +153,8 @@ const ViewerSM = (actions) => ({
           target: VIEWER_SM_CONST.VIEWER_SM_READY,
           actions: [
             async () => {
-              const { modelId, selectedGlbAssetId } = actions.RootStore();
+              const { modelId, selectedGlbAssetId, setLoading } =
+                actions.RootStore();
               console.log(`🚀 ~ selectedGlbAssetId:`, selectedGlbAssetId);
               const assetObject = await actions.AssetLoader.getGltf(
                 selectedGlbAssetId
@@ -169,6 +170,7 @@ const ViewerSM = (actions) => ({
               actions.RootStore().setSelectedMaterial(materials[0] ?? "");
               clonedObject.name = modelId;
               actions.Web3DScene.addModelToScene(modelId, clonedObject);
+              setLoading(false);
             },
           ],
         },

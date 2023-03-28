@@ -44,6 +44,7 @@ const Root = () => {
         Event.sendSMEvent("TEXTURE_CHANGED");
         break;
       case "glb":
+        setLoading(true);
         setSelectedGLB(data);
         Event.sendSMEvent("GLB_CHANGED");
         break;

@@ -60,6 +60,42 @@ export const TEXTURES = {
 };
 
 export const DEFAULT_GLB = {
+  145114: {
+    id: "145114",
+    type: "GLTF",
+    name: "Mixer",
+    url: "./assets/Mixer.glb",
+  },
+  145115: {
+    id: "145115",
+    type: "GLTF",
+    name: "ThorAndTheMidgardSerpent",
+    url: "./assets/ThorAndTheMidgardSerpent.glb",
+  },
+  145116: {
+    id: "145116",
+    type: "GLTF",
+    name: "Toy Train",
+    url: "./assets/ToyTrain.glb",
+  },
+  145133: {
+    id: "145133",
+    type: "GLTF",
+    name: "Canoe",
+    url: "./assets/Canoe.glb",
+  },
+  145134: {
+    id: "145134",
+    type: "GLTF",
+    name: "Chair",
+    url: "./assets/Chair.glb",
+  },
+  145135: {
+    id: "145135",
+    type: "GLTF",
+    name: "GeoPlanter",
+    url: "./assets/GeoPlanter.glb",
+  },
   145143: {
     id: "145143",
     type: "GLTF",
