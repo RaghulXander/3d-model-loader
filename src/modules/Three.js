@@ -12,7 +12,7 @@ import { ASSET_TYPES, THREEJS_NAMES } from "./Constant";
 
 const RESIZE_UPDATE_INTERVAL = 500;
 
-const mod = () => {
+const initThreeJS = () => {
   // Global objects
   let models = {};
   const modelTriggers = {};
@@ -33,40 +33,6 @@ const mod = () => {
   let updateHelpers = false;
 
   let animate = () => {};
-
-  const playNext = (animationQueue) => {
-    animationQueue.shift();
-    if (animationQueue.length > 0) {
-      if (animationQueue[0].type === "texture") animationQueue[0].value();
-    }
-  };
-
-  const instantiateIfNull = (modelId) => {
-    const modelObject = models[modelId];
-    console.log(
-      `🚀 ~ instantiateIfNull ~ modelObject:`,
-      modelObject,
-      modelTriggers
-    );
-    if (!(modelId in modelTriggers)) {
-      modelTriggers[modelId] = {};
-      modelTriggers[modelId].animationQueue = [];
-      const { animationQueue } = modelTriggers[modelId];
-      const mixerInstance = new THREE.AnimationMixer(modelObject.scene);
-      mixerInstance.addEventListener("finished", (data) => {
-        modelTriggers[modelId].prevAction = data.action;
-        playNext(animationQueue, modelId);
-      });
-      modelTriggers[modelId].animationMixer = mixerInstance;
-      const clock = new THREE.Clock();
-      (function anim() {
-        // snip
-        const delta = clock.getDelta();
-        requestAnimationFrame(anim);
-        mixerInstance.update(delta);
-      })();
-    }
-  };
 
   const resizeCanvasToDisplaySize = () => {
     if (renderer === null) {
@@ -399,12 +365,6 @@ const mod = () => {
       return renderer.domElement;
     },
     applyMaterial: (modelId, materialName, assetData) => {
-      console.log(
-        `🚀 ~ mod ~ modelId, materialName, assetDat:`,
-        modelId,
-        materialName,
-        assetData
-      );
       // instantiateIfNull(modelId);
       // const { animationQueue } = modelTriggers[modelId];
       const model = models[modelId];
@@ -425,6 +385,6 @@ const mod = () => {
     ),
   };
 };
-const ThreejsScene = mod();
+const ThreejsScene = initThreeJS();
 
 export default ThreejsScene;
