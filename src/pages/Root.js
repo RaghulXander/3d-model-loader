@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import LoadingBar from "./Loader";
 import Viewer from "./Viewer";
 
-import { PAGES, TEXTURES, DEFAULT_GLB } from "../modules/Constant";
+import { TEXTURES, DEFAULT_GLB } from "../modules/Constant";
 import { useRootStore } from "../state/RootStore";
 
 import Event from "../modules/Event";

@@ -1,11 +1,4 @@
-import { assign } from "xstate";
-
-import {
-  GLOBAL_STATE_ATTR,
-  PAGES,
-  ANIMATION_EVENTS,
-  ASSET_TYPES,
-} from "../modules/Constant";
+import { GLOBAL_STATE_ATTR, PAGES, ASSET_TYPES } from "../modules/Constant";
 import { isNumber } from "../utils/lodashUtils";
 import {
   checkAssetsLoaded,

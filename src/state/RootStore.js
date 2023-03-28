@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { APP_MODE, PAGES, DEFAULT_GLB, TEXTURES } from "../modules/Constant";
+import { APP_MODE, DEFAULT_GLB } from "../modules/Constant";
 
 const store = (set, get) => ({
   page: null,
