@@ -174,7 +174,7 @@ const initAssetLoader = () => {
     },
     isAssetIdsLoaded,
     getAsset: (id) => {
-      console.log("Inside getAsset", id, JSON.stringify(assetsMap));
+      console.log("Inside getAsset", id, assetsMap);
       return assetsMap[id];
     },
     getAssets: (idList) => {

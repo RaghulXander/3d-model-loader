@@ -11,7 +11,6 @@ import instantiateStateMachine from "./utils/instantiateStateMachine";
 function App() {
   useEffect(() => {
     // instantiate SM
-
     const configSM = APP_SM({
       ...CoreModules,
       ...StateStores,

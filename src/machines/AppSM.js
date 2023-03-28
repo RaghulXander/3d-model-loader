@@ -16,7 +16,6 @@ export const APP_SM = (actions) => ({
       onDone: APP_SM_CONST.GLB_VIEWER,
     },
     [APP_SM_CONST.GLB_VIEWER]: {
-      entry: [() => actions.RootStore().setAppMode("viewer")],
       ...ViewerSM(actions),
     },
   },

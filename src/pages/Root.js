@@ -13,6 +13,7 @@ import "./Root.scss";
 const Root = () => {
   const [
     loading,
+    setLoading,
     glbMaterials,
     setSelectedMaterial,
     setTexture,
@@ -22,6 +23,7 @@ const Root = () => {
     selectedGlb,
   ] = useRootStore((state) => [
     state.loading,
+    state.setLoading,
     state.glbMaterials,
     state.setSelectedMaterial,
     state.setTexture,
@@ -34,10 +36,11 @@ const Root = () => {
   const onMenuSelect = (data, selector) => {
     switch (selector) {
       case "material":
-        setSelectedMaterial(data);
+        setSelectedMaterial(data.value);
         break;
       case "texture":
         setTexture(data);
+        setLoading(true);
         Event.sendSMEvent("TEXTURE_CHANGED");
         break;
       case "glb":
@@ -58,9 +61,9 @@ const Root = () => {
             <LoadingBar />
           ) : (
             <Viewer
-              textures={Object.values(TEXTURES)}
-              materials={glbMaterials}
+              textureOptions={Object.values(TEXTURES)}
               glbOptions={Object.values(DEFAULT_GLB)}
+              materials={glbMaterials}
               selectedMaterial={selectedMaterial}
               selectedTexture={selectedTexture}
               selectedGlb={selectedGlb}

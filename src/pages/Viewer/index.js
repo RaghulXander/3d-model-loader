@@ -2,18 +2,18 @@ import React from "react";
 
 import Select from "react-select";
 
+import { useRootStore } from "../../state/RootStore";
 import "./style.scss";
 
-const Viewer = ({
-  loading,
-  glbOptions = [],
-  materials,
-  onMenuSelect,
-  textures = [],
-  selectedTexture = null,
-  selectedGlb = null,
-  selectedMaterial,
-}) => {
+const Viewer = ({ textureOptions, glbOptions, onMenuSelect }) => {
+  const [materials = [], selectedMaterial, selectedTexture, selectedGlb] =
+    useRootStore((state) => [
+      state.glbMaterials,
+      state.selectedMaterial,
+      state.selectedTexture,
+      state.selectedGlb,
+    ]);
+  console.log(`🚀 ~ Viewer ~ selectedMaterial:`, selectedMaterial);
   const getGlbOptions = () => {
     return glbOptions.map((option) => {
       return {
@@ -24,7 +24,7 @@ const Viewer = ({
     });
   };
   const getMaterialOptions = () => {
-    return materials.map((menu) => {
+    return materials?.map((menu) => {
       if (typeof menu === "string") return { label: menu, value: menu };
       return menu;
     });
@@ -81,7 +81,7 @@ const Viewer = ({
       <div className="dataSelector">
         <div className="title">Choose Textures</div>
         <div className="texturePane">
-          {textures.map((texture) => {
+          {textureOptions?.map((texture) => {
             return (
               <div
                 className="texture-item"
@@ -94,7 +94,7 @@ const Viewer = ({
                   height="56"
                   src={texture.url}
                   className={`${
-                    selectedTexture.url === texture.url && "active"
+                    selectedTexture?.url === texture?.url && "active"
                   }`}
                   alt="texture"
                   onClick={() => onMenuSelect(texture, "texture")}

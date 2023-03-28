@@ -17,7 +17,7 @@ const store = (set, get) => ({
   setSelectedMaterial: (selectedMaterial) => set({ selectedMaterial }),
   selectedMaterial: "",
   setTexture: (selectedTexture) => set({ selectedTexture }),
-  selectedTexture: Object.values(TEXTURES)[0],
+  selectedTexture: null,
   selectedGlb: Object.values(DEFAULT_GLB)[0],
   selectedGlbAssetId: Object.keys(DEFAULT_GLB)[0],
   setSelectedGLB: (selectedGlb) =>

@@ -21,16 +21,7 @@ export const VIEWER_SM_CONST = {
   VIEWER_SM_LOADING: "VIEWER_SM_LOADING",
   VIEWER_SM_CREATE_SCENE: "VIEWER_SM_CREATE_SCENE",
   VIEWER_SM_SCENE_READY: "VIEWER_SM_SCENE_READY",
-  VIEWER_SM_CENTER_AND_SCALE: "VIEWER_SM_CENTER_AND_SCALE",
-  VIEWER_SM_ON_LOAD_ANIMATION: "VIEWER_SM_N_LOAD_ANIMATION",
-  VIEWER_SM_ON_LOAD_TEXTURES: "VIEWER_SM_ON_LOAD_TEXTURES",
   VIEWER_SM_READY: "VIEWER_SM_READY",
-  VIEWER_SM_CONFIG_LOADED: "VIEWER_SM_CONFIG_LOADED",
-  VIEWER_SM_GLB_DOWNLOADED: "VIEWER_SM_GLB_DOWNLOADED",
-  VIEWER_SM_ALL_LOADED: "VIEWER_SM_ALL_LOADED",
-  VIEWER_SM_CONFIG_NOT_LOADED: "VIEWER_SM_CONFIG_NOT_LOADED",
-  VIEWER_SM_ON_LOAD_ASSET_DOWNLOAD: "VIEWER_SM_ON_LOAD_ASSET_DOWNLOAD",
-  POST_PROCESS: "POST_PROCESS",
 };
 
 const ViewerSM = (actions) => ({
@@ -103,20 +94,17 @@ const ViewerSM = (actions) => ({
 
           // actions.Web3DScene.centerAndScale(clonedObject);
           actions.Web3DScene.setCameraController(sceneConfig.orbitControls);
-          actions.Event.sendSMEvent(ANIMATION_EVENTS.CENTER_SCALE_COMPLETE);
+          actions.Event.sendSMEvent("VIEWER_IS_READY");
         },
       ],
       on: {
-        [ANIMATION_EVENTS.CENTER_SCALE_COMPLETE]: {
-          target: VIEWER_SM_CONST.VIEWER_SM_READY,
-          actions: [() => actions.Web3DScene.hideScene(false)],
-        },
+        VIEWER_IS_READY: [VIEWER_SM_CONST.VIEWER_SM_READY],
       },
     },
     UPDATE_TEXTURE: {
       entry: [
         async () => {
-          const { modelId, selectedTexture } = actions.RootStore();
+          const { selectedTexture } = actions.RootStore();
           await actions.AssetLoader.loadAssets(
             {
               [selectedTexture.id]: {
@@ -133,9 +121,8 @@ const ViewerSM = (actions) => ({
           target: VIEWER_SM_CONST.VIEWER_SM_READY,
           actions: [
             async () => {
-              const { modelId, selectedTexture, selectedMaterial } =
+              const { modelId, selectedTexture, selectedMaterial, setLoading } =
                 actions.RootStore();
-              console.log(`🚀 ~ selectedGlbAssetId:`, selectedTexture);
               const assetObject = await actions.AssetLoader.getAsset(
                 selectedTexture.id
               );
@@ -144,6 +131,7 @@ const ViewerSM = (actions) => ({
                 selectedMaterial,
                 assetObject
               );
+              setLoading(false);
             },
           ],
         },
@@ -195,6 +183,7 @@ const ViewerSM = (actions) => ({
     },
     [VIEWER_SM_CONST.VIEWER_SM_READY]: {
       entry: [
+        () => actions.Web3DScene.hideScene(false),
         () => actions.RootStore().setLoading(false),
         () => actions.RootStore().setPage(PAGES.MODEL_VIEWER),
         () => {

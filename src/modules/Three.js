@@ -43,6 +43,11 @@ const mod = () => {
 
   const instantiateIfNull = (modelId) => {
     const modelObject = models[modelId];
+    console.log(
+      `🚀 ~ instantiateIfNull ~ modelObject:`,
+      modelObject,
+      modelTriggers
+    );
     if (!(modelId in modelTriggers)) {
       modelTriggers[modelId] = {};
       modelTriggers[modelId].animationQueue = [];
@@ -207,7 +212,6 @@ const mod = () => {
           delta %= interval;
         }
       };
-      resizeCanvasToDisplaySize();
       sceneCreate = true;
     },
     addSceneToDOM: () => {
@@ -395,26 +399,21 @@ const mod = () => {
       return renderer.domElement;
     },
     applyMaterial: (modelId, materialName, assetData) => {
-      instantiateIfNull(modelId);
-      const { animationQueue } = modelTriggers[modelId];
+      console.log(
+        `🚀 ~ mod ~ modelId, materialName, assetDat:`,
+        modelId,
+        materialName,
+        assetData
+      );
+      // instantiateIfNull(modelId);
+      // const { animationQueue } = modelTriggers[modelId];
       const model = models[modelId];
-
-      const queue = modelTriggers[modelId].animationQueue;
-      const action = () => {
-        if (
-          model?.materials[materialName] &&
-          model?.materials[materialName]["map"] != null
-        ) {
-          if (model.materials[materialName]["map"] instanceof THREE.Texture) {
-            model.materials[materialName]["map"].dispose();
-          }
-          model.materials[materialName]["map"] = assetData;
+      console.log("materialName", model?.materials);
+      if (model?.materials[materialName]) {
+        if (model.materials[materialName]["map"] instanceof THREE.Texture) {
+          model.materials[materialName]["map"].dispose();
         }
-        playNext(animationQueue);
-      };
-      queue.push({ type: "texture", value: action });
-      if (queue.length === 1) {
-        action();
+        model.materials[materialName]["map"] = assetData;
       }
     },
     windowResizeListener: throttle(

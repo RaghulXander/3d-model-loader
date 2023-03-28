@@ -39,6 +39,24 @@ export const TEXTURES = {
     name: "SAND",
     url: "./assets/textures/Fabric.jpg",
   },
+  BLACK: {
+    id: "2343420",
+    type: "TEXTURE",
+    name: "BLACK",
+    url: "./assets/textures/Black.png",
+  },
+  WHITE: {
+    id: "2343422",
+    type: "TEXTURE",
+    name: "WHITE",
+    url: "./assets/textures/White.png",
+  },
+  BEIGE: {
+    id: "2343424",
+    type: "TEXTURE",
+    name: "BEIGE",
+    url: "./assets/textures/Sand.jpg",
+  },
 };
 
 export const DEFAULT_GLB = {
@@ -57,8 +75,8 @@ export const DEFAULT_GLB = {
   145145: {
     id: "145145",
     type: "GLTF",
-    name: "coffeemat",
-    url: "./assets/coffeemat.glb",
+    name: "Order Test",
+    url: "./assets/order-test.glb",
   },
   145146: {
     id: "145146",
