@@ -159,7 +159,6 @@ const initAssetLoader = () => {
   };
 
   const isAssetIdsLoaded = (idList) => {
-    console.log("isAssetIdsLoaded123", JSON.stringify(assetMetaMap), idList);
     return idList.every((id) => {
       const flag =
         id in assetMetaMap && (assetsMap[id] || assetsMapNetwork[id]);
@@ -186,7 +185,6 @@ const initAssetLoader = () => {
     },
     getGltf: async (id) => {
       const gltf = await createNewGltf(id);
-      console.log("Messi", gltf);
       return gltf;
     },
     loadAllAssets,

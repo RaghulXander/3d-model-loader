@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 
 import Root from "./pages/Root";
-import { APP_SM, APP_SM_CONST } from "./machines/AppSM";
 
+import { APP_SM, APP_SM_CONST } from "./machines/AppSM";
 import { CoreModules } from "./modules";
 import { StateStores } from "./state";
 

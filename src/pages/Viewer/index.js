@@ -3,7 +3,7 @@ import React from "react";
 import Select from "react-select";
 
 import { useRootStore } from "../../state/RootStore";
-import "./style.scss";
+import "./index.scss";
 
 const Viewer = ({ textureOptions, glbOptions, onMenuSelect }) => {
   const [materials = [], selectedMaterial, selectedTexture, selectedGlb] =
@@ -13,7 +13,7 @@ const Viewer = ({ textureOptions, glbOptions, onMenuSelect }) => {
       state.selectedTexture,
       state.selectedGlb,
     ]);
-  console.log(`🚀 ~ Viewer ~ selectedMaterial:`, selectedMaterial);
+
   const getGlbOptions = () => {
     return glbOptions.map((option) => {
       return {
@@ -72,7 +72,6 @@ const Viewer = ({ textureOptions, glbOptions, onMenuSelect }) => {
           name="material"
           options={getMaterialOptions()}
           onChange={(data) => {
-            console.log(`🚀 ~ data:`, data);
             onMenuSelect(data, "material");
           }}
         />
